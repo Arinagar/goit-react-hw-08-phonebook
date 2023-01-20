@@ -2,9 +2,8 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css';
-import { addContact } from 'components/redux/api/api';
-import { selectContacts } from 'components/redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -43,7 +42,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className={css.form}>
+    <div>
       <form onSubmit={onSubmitForm}>
         <h2>Phonebook</h2>
         <label>
@@ -56,7 +55,6 @@ export const ContactForm = () => {
             value={name}
             required
             onChange={onInputChange}
-            className={css.input}
           />
         </label>
         <label>
@@ -69,12 +67,9 @@ export const ContactForm = () => {
             required
             value={number}
             onChange={onInputChange}
-            className={css.input}
           />
         </label>
-        <button type="submit" className={css.btn}>
-          Add contact
-        </button>
+        <button type="submit">Add contact</button>
       </form>
     </div>
   );
