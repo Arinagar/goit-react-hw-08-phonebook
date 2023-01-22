@@ -1,30 +1,21 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { AppBar } from 'components/AppBar/AppBar';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
+import { PuffLoader } from 'react-spinners';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
   return (
     <>
-      <header>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register">Register</NavLink>
-                <NavLink to="/login">Log In</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <AppBar />
       <main>
-        <Outlet />
+        <Suspense fallback={<PuffLoader color="#36d7b7" size={200} />}>
+          <Outlet />
+        </Suspense>
       </main>
-      <ToastContainer />
+      <ToastContainer position="center" />
     </>
   );
 };
