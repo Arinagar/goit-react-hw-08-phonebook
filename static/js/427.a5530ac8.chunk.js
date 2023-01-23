@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[427],{7427:function(e,t,a){a.r(t),a.d(t,{default:function(){return s}});var c="HomePage_container__2aRgz",o="HomePage_title__kXwYR",n=a(9478),i=a(184),s=function(){return(0,i.jsxs)("div",{className:c,children:[(0,i.jsx)("h1",{className:o,children:"Let the contacts be with you, always!"}),(0,i.jsx)("img",{src:n,alt:"cool jedi"})]})}},9478:function(e,t,a){e.exports=a.p+"static/media/Jedi.41c568e5add09f856cdb.jpg"}}]);
+//# sourceMappingURL=427.a5530ac8.chunk.js.map
