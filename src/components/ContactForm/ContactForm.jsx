@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import css from './ContactForm.module.css';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -25,7 +27,16 @@ export const ContactForm = () => {
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (isInContact) {
-      alert(`${name} has already exists`);
+      toast.warn(`${name} has already exists`, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
       return;
     }
 
@@ -42,9 +53,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitForm}>
-        <h2>Phonebook</h2>
+    <div className={css.form}>
+      <form onSubmit={onSubmitForm} className={css.contact_form}>
         <label>
           Name
           <input
@@ -55,6 +65,7 @@ export const ContactForm = () => {
             value={name}
             required
             onChange={onInputChange}
+            className={css.input}
           />
         </label>
         <label>
@@ -67,9 +78,12 @@ export const ContactForm = () => {
             required
             value={number}
             onChange={onInputChange}
+            className={css.input}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.btn}>
+          Add contact
+        </button>
       </form>
     </div>
   );

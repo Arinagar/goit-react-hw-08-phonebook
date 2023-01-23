@@ -1,13 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-
-import Layout from './Layout/Layout';
-import { HomePage } from 'Pages/HomePage/HomePage';
-import { Register } from 'Pages/Register/Register';
-import { Login } from 'Pages/Login/Login';
-import { ContactsPage } from 'Pages/ContactsPage/ContactsPage';
-import NotFound from './NotFound/NotFound';
 
 import { selectIsRefreshing } from 'redux/user/selectors';
 import { refreshUser } from 'redux/user/operations';
@@ -15,6 +9,13 @@ import { HashLoader } from 'react-spinners';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import css from './App.module.css';
+
+const Layout = lazy(() => import('./Layout/Layout'));
+const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
+const Register = lazy(() => import('Pages/Register/Register'));
+const Login = lazy(() => import('Pages/Login/Login'));
+const ContactsPage = lazy(() => import('Pages/ContactsPage/ContactsPage'));
+const NotFound = lazy(() => import('./NotFound/NotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <div>
+    <div className={css.loader}>
       <HashLoader color="#36d7b7" size={150} />{' '}
     </div>
   ) : (

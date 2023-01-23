@@ -1,9 +1,3 @@
-.container {
-  margin: 0;
-  padding: 15px;
-  max-width: 1200px;
-}
-
 .loader {
   display: flex;
   justify-content: center;

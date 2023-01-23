@@ -7,8 +7,9 @@ import { FilterContacts } from 'components/FilterContacts/FilterContacts';
 import { HashLoader } from 'react-spinners';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
+import css from './ContactsPage.module.css';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -22,13 +23,15 @@ export const ContactsPage = () => {
       <ContactForm />
       <FilterContacts />
       {isLoading && !error ? (
-        <>
+        <div className={css.loader}>
           <br />
           <HashLoader color="#36d7b7" size={150} />
-        </>
+        </div>
       ) : (
         <ContactsList />
       )}
     </div>
   );
 };
+
+export default ContactsPage;

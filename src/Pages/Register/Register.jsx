@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/user/operations';
 import css from './Register.module.css';
 
-export const Register = () => {
+const Register = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -37,3 +37,5 @@ export const Register = () => {
     </form>
   );
 };
+
+export default Register;
