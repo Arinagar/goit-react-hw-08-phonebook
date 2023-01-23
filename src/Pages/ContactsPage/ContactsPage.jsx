@@ -17,16 +17,18 @@ export const ContactsPage = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  <div>
-    <ContactForm />
-    <FilterContacts />
-    {isLoading && !error ? (
-      <>
-        <br />
-        <HashLoader color="#36d7b7" size={150} />
-      </>
-    ) : (
-      <ContactsList />
-    )}
-  </div>;
+  return (
+    <div>
+      <ContactForm />
+      <FilterContacts />
+      {isLoading && !error ? (
+        <>
+          <br />
+          <HashLoader color="#36d7b7" size={150} />
+        </>
+      ) : (
+        <ContactsList />
+      )}
+    </div>
+  );
 };
