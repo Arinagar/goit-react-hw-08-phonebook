@@ -23,15 +23,26 @@ const Register = () => {
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
       <label className={css.label}>
         Username
-        <input type="text" name="name" />
+        <input
+          type="text"
+          name="name"
+          required
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan, Aragorn son of Aratorn"
+        />
       </label>
       <label className={css.label}>
         Email
-        <input type="email" name="email" />
+        <input
+          type="email"
+          name="email"
+          required
+          pattern="[a-zA-Zа-яА-Я0-9._%+-]+@[a-zA-Zа-яА-Я0-9.-]+\.[a-z]{2,4}$"
+        />
       </label>
       <label className={css.label}>
         Password
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
       </label>
       <button type="submit">Register</button>
     </form>

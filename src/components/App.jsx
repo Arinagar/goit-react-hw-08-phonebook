@@ -27,7 +27,7 @@ export const App = () => {
 
   return isRefreshing ? (
     <div className={css.loader}>
-      <HashLoader color="#36d7b7" size={150} />{' '}
+      <HashLoader color="#36d7b7" size={150} />
     </div>
   ) : (
     <div className={css.container}>
