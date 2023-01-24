@@ -7,3 +7,6 @@
   flex-direction: column;
   margin-bottom: 16px;
 }
+input {
+  margin-top: 5px;
+}
