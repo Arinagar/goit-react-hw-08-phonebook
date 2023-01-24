@@ -1,10 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { loginUser } from 'redux/user/operations';
 import css from './Login.module.css';
+import { selectIsLoading } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,7 +17,9 @@ const Login = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    ).then(response => {
+      toast.success(`Welcome back, ${response.payload.user.name}`);
+    });
     form.reset();
   };
 
@@ -28,7 +33,9 @@ const Login = () => {
         Password
         <input type="password" name="password" required />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit" disabled={isLoading}>
+        Log In
+      </button>
     </form>
   );
 };

@@ -1,13 +1,16 @@
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteContact } from 'redux/contacts/operations';
-import { selectVisibleContacts } from 'redux/contacts/selectors';
+import {
+  selectIsLoading,
+  selectVisibleContacts,
+} from 'redux/contacts/selectors';
 import css from './ContactList.module.css';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <ul className={css.list}>
@@ -21,6 +24,7 @@ export const ContactsList = () => {
                 dispatch(deleteContact(el.id));
               }}
               className={css.list_button}
+              disabled={isLoading}
             >
               Delete
             </button>

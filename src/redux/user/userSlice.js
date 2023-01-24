@@ -7,12 +7,13 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  isLoading: false, 
+  isLoading: false,
   error: null,
 };
 
 const handlePending = state => {
   state.isLoading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, { payload }) => {

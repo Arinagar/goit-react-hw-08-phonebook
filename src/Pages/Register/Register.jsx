@@ -1,10 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { registerUser } from 'redux/user/operations';
 import css from './Register.module.css';
+import { selectIsLoading } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -15,7 +18,11 @@ const Register = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    ).then(response => {
+      toast.success(
+        `${response.payload.user.name} you have successfully registered`
+      );
+    });
     form.reset();
   };
 
@@ -38,13 +45,22 @@ const Register = () => {
           name="email"
           required
           pattern="[a-zA-Zа-яА-Я0-9._%+-]+@[a-zA-Zа-яА-Я0-9.-]+\.[a-z]{2,4}$"
+          title="Email example User@mail.com"
         />
       </label>
       <label className={css.label}>
         Password
-        <input type="password" name="password" required />
+        <input
+          type="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          required
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+        />
       </label>
-      <button type="submit">Register</button>
+      <button type="submit" disabled={isLoading}>
+        Register
+      </button>
     </form>
   );
 };

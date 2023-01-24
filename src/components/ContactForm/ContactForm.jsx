@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { nanoid } from 'nanoid';
 import { addContact } from 'redux/contacts/operations';
-import { selectContacts } from 'redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import css from './ContactForm.module.css';
 import { toast } from 'react-toastify';
 
@@ -13,6 +13,7 @@ export const ContactForm = () => {
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const onInputChange = event => {
     const { name, value } = event.target;
@@ -81,7 +82,7 @@ export const ContactForm = () => {
             className={css.input}
           />
         </label>
-        <button type="submit" className={css.btn}>
+        <button type="submit" className={css.btn} disabled={isLoading}>
           Add contact
         </button>
       </form>
