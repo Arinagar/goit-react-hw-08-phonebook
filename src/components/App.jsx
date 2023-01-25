@@ -12,8 +12,8 @@ import css from './App.module.css';
 
 const Layout = lazy(() => import('./Layout/Layout'));
 const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
-const Register = lazy(() => import('Pages/Register/Register'));
-const Login = lazy(() => import('Pages/Login/Login'));
+const Register = lazy(() => import('Pages/Register/RegisterForm'));
+const Login = lazy(() => import('Pages/Login/LoginForm'));
 const ContactsPage = lazy(() => import('Pages/ContactsPage/ContactsPage'));
 const NotFound = lazy(() => import('./NotFound/NotFound'));
 

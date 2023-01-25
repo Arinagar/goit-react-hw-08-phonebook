@@ -5,14 +5,13 @@ import { Outlet } from 'react-router-dom';
 
 import { HashLoader } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
-import { selectError } from 'redux/contacts/selectors';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
-  const error = useSelector(selectError);
+  const error = useSelector(state => state.auth.error);
 
   useEffect(() => {
-    toast.error(error);
+    if (error !== null) toast.error(error);
   }, [error]);
 
   const override = {
